@@ -33,8 +33,13 @@ def print_real_roots(root1, root2):
 def print_complex_roots(root1, root2):
     """Prints the complex roots of the quadratic."""
     print('\nThe quadratic has complex roots.')
-    print(root1)
-    print(root2)
+
+    if root1.real == 0:
+        print(f'{root1.imag}j')
+        print(f'{root2.imag}j')
+    else:
+        print(root1)
+        print(root2)
 
 def calc_discriminant(a, b, c):
     """Calculates the discriminant of the quadratic."""
