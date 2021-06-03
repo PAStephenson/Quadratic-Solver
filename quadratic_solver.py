@@ -55,18 +55,20 @@ def check_solutions(a, b, c):
     else:
         complex_roots(a, b, c)
 
-while True:
-    a = input('Please insert the coefficient of the x^2 term: ')
-    b = input('Please insert the coefficient of the x term: ')
-    c = input('Please insert the coefficient of the constant term: ')
+if __name__ == '__main__':
 
-    try:
-        a = float(a)
-        b = float(b)
-        c = float(c)
-    except ValueError:
-        print('Please enter numbers only.\n')
-    else:
-        break
+    while True:
+        a = input('Please insert the coefficient of the x^2 term: ')
+        b = input('Please insert the coefficient of the x term: ')
+        c = input('Please insert the coefficient of the constant term: ')
 
-check_solutions(a, b, c)
+        try:
+            a = float(a)
+            b = float(b)
+            c = float(c)
+        except ValueError:
+            print('Please enter numbers only.\n')
+        else:
+            break
+
+    check_solutions(a, b, c)
