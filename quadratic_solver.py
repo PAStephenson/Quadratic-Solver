@@ -8,7 +8,7 @@ def real_roots(a, b, c):
     root1 = q / a
     root2 = c / q
 
-    print_real_roots(root1, root2)
+    return root1, root2
 
 def complex_roots(a, b, c):
     """Solves the quadratic if roots are complex."""
@@ -18,42 +18,33 @@ def complex_roots(a, b, c):
     root1 = complex(real, imaginary)
     root2 = root1.conjugate()
 
-    print_complex_roots(root1, root2)
+    return root1, root2
 
-def print_real_roots(root1, root2):
+def print_real_roots(solutions):
     """Prints the real roots of the quadratic."""
-    if root1 == root2:
+    if solutions[0] == solutions[1]:
         print('\nThe quadratic has one real root.')
-        print(root1)
+        print(solutions[0])
     else:
         print('\nThe quadratic has two real roots.')
-        print(root1)
-        print(root2)
+        print(solutions[0])
+        print(solutions[1])
 
-def print_complex_roots(root1, root2):
+def print_complex_roots(solutions):
     """Prints the complex roots of the quadratic."""
     print('\nThe quadratic has complex roots.')
 
-    if root1.real == 0:
-        print(f'{root1.imag}j')
-        print(f'{root2.imag}j')
+    if solutions[0].real == 0:
+        print(f'{solutions[0].imag}j')
+        print(f'{solutions[1].imag}j')
     else:
-        print(root1)
-        print(root2)
+        print(solutions[0])
+        print(solutions[1])
 
 def calc_discriminant(a, b, c):
     """Calculates the discriminant of the quadratic."""
     discriminant = b**2 - 4 * a * c
     return discriminant
-
-def check_solutions(a, b, c):
-    """Checks the number and type of solutions of the quadratic."""
-    discriminant = calc_discriminant(a, b, c)
-
-    if discriminant >= 0:
-        real_roots(a, b, c)
-    else:
-        complex_roots(a, b, c)
 
 if __name__ == '__main__':
 
@@ -70,5 +61,12 @@ if __name__ == '__main__':
             print('Please enter numbers only.\n')
         else:
             break
+    
+    discriminant = calc_discriminant(a, b, c)
 
-    check_solutions(a, b, c)
+    if discriminant >= 0:
+        solutions = real_roots(a, b, c)
+        print_real_roots(solutions)
+    else:
+        solutions = complex_roots(a, b, c)
+        print_complex_roots(solutions)
