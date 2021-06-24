@@ -1,9 +1,8 @@
 import math
-import numpy as np
 
 def real_roots(a, b, c):
     """Solves the quadratic if roots are real."""
-    q = -(b + np.sign(b) * math.sqrt(calc_discriminant(a, b, c)))/(2) 
+    q = -(b + sign(b) * math.sqrt(calc_discriminant(a, b, c)))/(2) 
 
     root1 = q / a
     root2 = c / q
@@ -45,6 +44,15 @@ def calc_discriminant(a, b, c):
     """Calculates the discriminant of the quadratic."""
     discriminant = b**2 - 4 * a * c
     return discriminant
+
+def sign(number):
+    """Determines the sign of a number.""" 
+    if number == 0:
+        return 0
+    elif number < 0:
+        return -1
+    elif number > 0:
+        return 1
 
 if __name__ == '__main__':
 
